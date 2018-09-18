@@ -6,7 +6,7 @@
 /*   By: lmkhwana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 11:34:57 by lmkhwana          #+#    #+#             */
-/*   Updated: 2018/09/18 12:47:47 by lmkhwana         ###   ########.fr       */
+/*   Updated: 2018/09/18 13:33:02 by lmkhwana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ static void	create_env(char ***env, char **environ)
 	i = -1;
 	while (environ[++i])
 	{
-		(*env)[i] = (char*)ft_memalloc(PATH_MAX + 1);
+		(*env)[i] = (char*)ft_memalloc(PATH_MAX + 2);
 		j = -1;
 		while (environ[i][++j])
 			(*env)[i][j] = environ[i][j];
 		(*env)[i][j] = 0;
 	}
 	(*env)[i] = NULL;
-	i = -1;
 }
 
 void		display_prompt(void)

@@ -6,7 +6,7 @@
 /*   By: lmkhwana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 11:40:20 by lmkhwana          #+#    #+#             */
-/*   Updated: 2018/09/18 13:27:33 by lmkhwana         ###   ########.fr       */
+/*   Updated: 2018/09/18 13:49:42 by lmkhwana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	**create_new(char **args, char **env)
 	environ[i] = (char*)ft_memalloc(PATH_MAX + 1);
 	ft_strncat(environ[i], args[1], ft_strlen(args[1]));
 	ft_strncat(environ[i], "=", 1);
-	ft_strncat(environ[i], args[2], ft_strlen(args[2]));
+	ft_strncat(environ[i], args[2], ft_strlen(args[2] + 1));
 	e = &environ;
 	return (*e);
 }
@@ -96,5 +96,6 @@ char		**setenv_command(char **args, char **env)
 		return (one_arg(args, env));
 	if (find_env_variable(args[1], env)[0] != 0)
 		return (replace(args, env));
-	return (create_new(args, env));
+	else
+		return (create_new(args, env));
 }
