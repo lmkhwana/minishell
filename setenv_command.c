@@ -6,7 +6,7 @@
 /*   By: lmkhwana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 11:40:20 by lmkhwana          #+#    #+#             */
-/*   Updated: 2018/09/18 12:54:56 by lmkhwana         ###   ########.fr       */
+/*   Updated: 2018/09/18 13:27:33 by lmkhwana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static char	**create_new(char **args, char **env)
 	char	***e;
 	char	**environ;
 	int		i;
-	int		l;
 
 	i = -1;
 	e = &env;
@@ -47,8 +46,7 @@ static char	**create_new(char **args, char **env)
 	while ((*e)[++i])
 		environ[i] = ft_strdup((*e)[i]);
 	free_env(env);
-	l = (ft_strlen(args[1] + 1) + ft_strlen(args[2]));
-	environ[i] = (char*)ft_memalloc(l + 1);
+	environ[i] = (char*)ft_memalloc(PATH_MAX + 1);
 	ft_strncat(environ[i], args[1], ft_strlen(args[1]));
 	ft_strncat(environ[i], "=", 1);
 	ft_strncat(environ[i], args[2], ft_strlen(args[2]));
